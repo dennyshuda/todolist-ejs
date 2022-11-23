@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do List</title>
+  </head>
+  <body>
+    <h1><%= kindOfDay %> List</h1>
+    <ul>
+      <li>Eat</li>
+      <li>Drink</li>
+      <li>Work</li>
+      <% for (let index = 0; index < newItem.length; index++) { %> <%
+      console.log(newItem.length); %>
+      <li><% newItem[index] %></li>
+      <% } %>
+    </ul>
+
+    <form action="/" method="post">
+      <input type="text" name="todo" />
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
