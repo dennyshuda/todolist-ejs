@@ -46,8 +46,11 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", (req, res) => {
-  let item = req.body.todo;
-  items.push(item);
+  let itemName = req.body.todo;
+  const item = new Item({
+    name: itemName,
+  });
+  item.save();
 
   res.redirect("/");
 });
