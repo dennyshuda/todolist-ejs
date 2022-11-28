@@ -12,10 +12,9 @@
       <li>Eat</li>
       <li>Drink</li>
       <li>Work</li>
-      <% for (let index = 0; index < newItem.length; index++) { %> <%
-      console.log(newItem.length); %>
-      <li><%= newItem[index] %></li>
-      <% } %>
+      <% newItem.forEach(item => { %>
+      <li><%= item.name %></li>
+      <% }); %>
     </ul>
 
     <form action="/" method="post">
