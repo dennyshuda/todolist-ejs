@@ -28,26 +28,21 @@ const item2 = new Item({
 
 const defaultItems = [item, item2];
 
-Item.insertMany(defaultItems, (err) => {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log("succes");
-  }
-});
-
 app.get("/", (req, res) => {
-  const date = new Date();
-  const options = {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  };
-
-  const today = date.toLocaleDateString("en-US", options);
-  res.render("index", { kindOfDay: today, newItem: items });
-  console.log(items);
+  Item.find({}, (err, foundItems) => {
+    if (foundItems.length === 0) {
+      Item.insertMany(defaultItems, (err) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log("succes");
+        }
+      });
+      res.redirect("/");
+    } else {
+      res.render("index", { kindOfDay: "Today", newItem: foundItems });
+    }
+  });
 });
 
 app.post("/", (req, res) => {
